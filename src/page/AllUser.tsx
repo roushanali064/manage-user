@@ -1,19 +1,37 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import { TUser } from "../type/user";
+import Search from "../components/Search";
+import { FieldValues } from "react-hook-form";
 
 const AllUser = () => {
     const [users, setUsers] = useState([]);
+    const [searchValue, setSearchValue] = useState('')
+
+    // fetch users
+    // if(searchValue.search){
+    //         fetch(`https://dummyjson.com/users/search?q=${searchValue.search}`,)
+    //         .then(res=>res.json())
+    //         .then(data=> setUsers(data.users))
+    // }
+    const url = `https://dummyjson.com/users${searchValue.length? `${`/search?q=${searchValue}`}` : ''}`;
+    console.log(url);
     useEffect(  ()=>{
-       fetch('https://dummyjson.com/users')
+       fetch(url)
        .then(res=>res.json())
        .then(data=> setUsers(data.users))
-    },[])
+    },[searchValue])
+
+    // handle search
+    const handleSearch = (data: FieldValues)=>{
+        setSearchValue(data.search)
+    }
 
     return (
         <div className="mt-5 w-full">
-            <div className="">
-                <h3 className="text-xl font-semibold text-rose-600 text-center">See All Users</h3>
+            <div className="flex justify-between items-center flex-col-reverse md:flex-row">
+                <div>filter</div>
+                <Search handleSearch={handleSearch}/>
             </div>
             {
                 users.length ? <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 mt-5">
