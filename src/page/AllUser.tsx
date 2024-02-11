@@ -14,19 +14,38 @@ const AllUser = () => {
   const [users, setUsers] = useState<TUser[]>([]);
   const [searchValue, setSearchValue] = useState("");
   const [sorted, setSorted] = useState(false);
+  const [skip, setSkip] = useState(0);
 
   const searchUrl = searchValue.length ? `${`/search?q=${searchValue}`}` : "";
-  const url = `https://dummyjson.com/users${searchUrl}`;
+  const url = `https://dummyjson.com/users${
+    searchUrl.length
+      ? searchUrl + "&limit=9" + "&skip=" + skip
+      : "?limit=9" + "&skip=" + skip
+  }`;
+
+  console.log(url);
 
   // get user side effect
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setUsers(data.users));
-  }, [searchValue]);
+  }, [searchValue, skip]);
+
+  //   handle pagination
+  const handlePagination = (status: boolean) => {
+    if (status) {
+      setSkip(skip + 9);
+    }
+
+    if (!status && skip > 0) {
+      setSkip(skip - 9);
+    }
+  };
 
   // handle search
   const handleSearch = (data: FieldValues) => {
+    setSkip(0);
     setSearchValue(data.search);
   };
 
@@ -70,6 +89,8 @@ const AllUser = () => {
         {/* search */}
         <Search handleSearch={handleSearch} />
       </div>
+
+      {/* show card */}
       {users.length ? (
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 mt-5">
           {users.map((user: TUser) => (
@@ -81,6 +102,26 @@ const AllUser = () => {
           No Data Found
         </p>
       )}
+
+      {/* pagination */}
+      <div className="flex justify-center md:justify-end mt-5">
+        <div className="join grid grid-cols-2">
+          <button
+            disabled={skip == 0}
+            onClick={() => handlePagination(false)}
+            className="join-item btn btn-outline"
+          >
+            Previous page
+          </button>
+          <button
+            disabled={!users.length}
+            onClick={() => handlePagination(true)}
+            className="join-item btn btn-outline"
+          >
+            Next
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
