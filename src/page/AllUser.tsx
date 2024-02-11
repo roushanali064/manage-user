@@ -17,13 +17,13 @@ const AllUser = () => {
   const [skip, setSkip] = useState(0);
 
   const searchUrl = searchValue.length ? `${`/search?q=${searchValue}`}` : "";
+  
   const url = `https://dummyjson.com/users${
     searchUrl.length
       ? searchUrl + "&limit=9" + "&skip=" + skip
       : "?limit=9" + "&skip=" + skip
   }`;
 
-  console.log(url);
 
   // get user side effect
   useEffect(() => {
@@ -98,13 +98,14 @@ const AllUser = () => {
           ))}
         </div>
       ) : (
-        <p className="text-gray-600 text-center font-semibold text-xl">
+        <p className="text-gray-600 text-center font-semibold text-xl mt-10 mb-10">
           No Data Found
         </p>
       )}
 
       {/* pagination */}
-      <div className="flex justify-center md:justify-end mt-5">
+      {
+        users.length ? <div className="flex justify-center md:justify-end mt-5">
         <div className="join grid grid-cols-2">
           <button
             disabled={skip == 0}
@@ -121,7 +122,10 @@ const AllUser = () => {
             Next
           </button>
         </div>
-      </div>
+      </div> 
+      :
+      null
+      }
     </div>
   );
 };
