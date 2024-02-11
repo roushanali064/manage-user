@@ -7,7 +7,7 @@ type TProps = {
 
 const Sort = ({handleNameSorting,handleEmailSorting,handleCompanyNameSorting}: TProps) => {
     return (
-        <div className="dropdown dropdown-hover">
+        <div className="dropdown dropdown-hover mt-4 md:mt-0 mr-0 md:mr-4">
           <div tabIndex={0} role="button" className="btn m-1">
             Sort User
           </div>

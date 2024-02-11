@@ -77,7 +77,7 @@ const AllUser = () => {
   }, [sorted]);
 
   return (
-    <div className="mt-5 w-full">
+    <div className="mt-5 w-full flex flex-col justify-center items-center">
       <div className="flex justify-between items-center flex-col-reverse md:flex-row">
         {/* sorting */}
         <Sort
