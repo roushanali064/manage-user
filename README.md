@@ -1,30 +1,78 @@
-# React + TypeScript + Vite
+# Manage User
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+This project is designed for managing user data using React, React Router, React Hook Form, and other related technologies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Using Technologies
 
-## Expanding the ESLint configuration
+- **react**: JavaScript library for building user interfaces.
+- **typescript**: TypeScript language compiler.
+- **react-dom**: React package for working with the DOM.
+- **react-hook-form**: Library to manage form state in React.
+- **react-icons**: Icon library for React.
+- **react-router-dom**: React bindings for React Router.
+- **sonner**: Library for Show toast and notification.
+- **tailwindcss**: CSS framework for building custom designs.
+- **daisyui**: Tailwind CSS components plugin.
+- **@types/react**: TypeScript types for React.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation
 
-- Configure the top-level `parserOptions` property like this:
+To get started with this project, you'll need to have Node.js installed on your machine.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. **Clone this repository:**
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+    ```bash
+    git clone https://github.com/roushanali064/manage-user.git
+    ```
+
+2. **Navigate into the project directory:**
+
+    ```bash
+    cd manage-user
+    ```
+
+3. **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+## Scripts
+
+- **dev**: Run Vite in development mode.
+- **build**: Build the project using TypeScript and Vite.
+- **lint**: Lint the project using ESLint.
+- **preview**: Preview the project using Vite.
+
+## Usage
+
+- To start the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+- To build the project:
+
+    ```bash
+    npm run build
+    ```
+
+- To lint the project:
+
+    ```bash
+    npm run lint
+    ```
+
+- To preview the project:
+
+    ```bash
+    npm run preview
+    ```
+
+
+## License
+
+This project is private and no license is provided.
