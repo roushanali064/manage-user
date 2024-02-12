@@ -3,6 +3,7 @@ import App from "../App";
 import AllUser from "../page/AllUser";
 import UserDetails from "../page/UserDetails";
 import AddUser from "../page/AddUser";
+import NotFound from "../page/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -24,4 +25,8 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: '*',
+    element: <NotFound/>
+  }
 ]);
