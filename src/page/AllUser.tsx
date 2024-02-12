@@ -15,6 +15,7 @@ const AllUser = () => {
   const [searchValue, setSearchValue] = useState("");
   const [sorted, setSorted] = useState(false);
   const [skip, setSkip] = useState(0);
+  const [loading, setLoading] = useState(false)
 
   const searchUrl = searchValue.length ? `${`/search?q=${searchValue}`}` : "";
   
@@ -27,9 +28,13 @@ const AllUser = () => {
 
   // get user side effect
   useEffect(() => {
+    setLoading(true)
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setUsers(data.users));
+      .then((data) => {
+        setUsers(data.users)
+        setLoading(false)
+      });
   }, [searchValue, skip]);
 
   //   handle pagination
@@ -75,6 +80,13 @@ const AllUser = () => {
       setSorted(!sorted);
     }
   }, [sorted]);
+
+  if(loading){
+    return <div className="flex justify-center items-center max-w-full h-screen">
+      <p className="font-xl text-black font-bold animate-pulse">Loading</p>
+      <span className="loading loading-ring loading-lg"></span>
+    </div>
+  }
 
   return (
     <div className="mt-5 w-full flex flex-col justify-center items-center">
