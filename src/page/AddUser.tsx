@@ -36,7 +36,7 @@ const AddUser = () => {
     })
       .then((res) => res.json())
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .then(data=>{
+      .then(()=>{
         setIsLoading(false)
         toast.success('User add successFully')
       });
